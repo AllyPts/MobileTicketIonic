@@ -1,0 +1,7 @@
+{
+  "name": "MobileTicketIonic",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
