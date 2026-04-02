@@ -5,35 +5,51 @@
 </ion-header>
 
 <ion-content [fullscreen]="true" class="ion-padding">
-  <ion-item>
+  <ion-item class="ion-margin-bottom">
     <ion-label position="stacked">Selecione seu Guichê</ion-label>
-    <ion-select placeholder="Escolher número">
-      <ion-select-option> Guichê n </ion-select-option>
+    <ion-select placeholder="Escolher número" [(ngModel)]="guicheSelecionado">
+      <ion-select-option [value]="1">Guichê 1</ion-select-option>
+      <ion-select-option [value]="2">Guichê 2</ion-select-option>
+      <ion-select-option [value]="3">Guichê 3</ion-select-option>
     </ion-select>
   </ion-item>
 
   <div>
-    <ion-card color="light">
+    <ion-card color="light" class="ion-no-margin">
       <ion-card-header>
-        <ion-card-subtitle> Atendendo no Guichê N </ion-card-subtitle>
-        <ion-card-title class="ion-text-center" style="font-size: 2.5em">
-          <!-- {{ senhaAtual?.codigo || 'Aguardando...' }} -->
+        <ion-card-subtitle
+          >ATENDENDO NO GUICHÊ {{ guicheSelecionado }}</ion-card-subtitle
+        >
+        <ion-card-title
+          class="ion-text-center"
+          style="font-size: 3em; color: var(--ion-color-primary)"
+        >
+          {{ senhaAtual?.numero || '---' }}
         </ion-card-title>
       </ion-card-header>
     </ion-card>
 
     <div class="ion-margin-top">
-      <ion-button expand="block" color="success">
+      <ion-button
+        expand="block"
+        color="success"
+        size="large"
+        (click)="proximaSenha()"
+      >
         <ion-icon name="megaphone-outline" slot="start"></ion-icon>
         Chamar Próximo
       </ion-button>
 
-      <ion-row>
+      <ion-row class="ion-margin-top">
         <ion-col>
-          <ion-button expand="block" color="warning"> Iniciar </ion-button>
+          <ion-button expand="block" color="warning" fill="outline">
+            Iniciar
+          </ion-button>
         </ion-col>
         <ion-col>
-          <ion-button expand="block" color="danger"> Finalizar </ion-button>
+          <ion-button expand="block" color="danger" fill="outline">
+            Finalizar
+          </ion-button>
         </ion-col>
       </ion-row>
     </div>
