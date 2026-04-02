@@ -1,17 +1,41 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 2
-    </ion-title>
+  <ion-toolbar color="primary">
+    <ion-title>Área do Atendente</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-item>
+    <ion-label position="stacked">Selecione seu Guichê</ion-label>
+    <ion-select placeholder="Escolher número">
+      <ion-select-option> Guichê n </ion-select-option>
+    </ion-select>
+  </ion-item>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+  <div>
+    <ion-card color="light">
+      <ion-card-header>
+        <ion-card-subtitle> Atendendo no Guichê N </ion-card-subtitle>
+        <ion-card-title class="ion-text-center" style="font-size: 2.5em">
+          <!-- {{ senhaAtual?.codigo || 'Aguardando...' }} -->
+        </ion-card-title>
+      </ion-card-header>
+    </ion-card>
+
+    <div class="ion-margin-top">
+      <ion-button expand="block" color="success">
+        <ion-icon name="megaphone-outline" slot="start"></ion-icon>
+        Chamar Próximo
+      </ion-button>
+
+      <ion-row>
+        <ion-col>
+          <ion-button expand="block" color="warning"> Iniciar </ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button expand="block" color="danger"> Finalizar </ion-button>
+        </ion-col>
+      </ion-row>
+    </div>
+  </div>
 </ion-content>
