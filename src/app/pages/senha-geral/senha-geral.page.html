@@ -1,0 +1,26 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/tab1"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Senha Geral</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="container">
+    <div class="cabecalho">
+      <p class="label-topo">LABORATÓRIO MÉDICO</p>
+      <h1>Sua senha foi emitida!</h1>
+      <span class="badge-funcionamento">Funcionamento: 07h às 17h</span>
+    </div>
+    <div class="card-senha">
+      <p class="tipo">Senha Geral</p>
+      <h1 class="codigo">250402-SG01</h1>
+      <div class="divider"></div>
+      <p class="info">Posição na fila: <strong>2°</strong></p>
+      <p class="info">Tempo estimado: <strong>~5 min</strong></p>
+    </div>
+    <p class="aviso">Dirija-se ao guichê quando seu número for chamado</p>
+  </div>
+</ion-content>

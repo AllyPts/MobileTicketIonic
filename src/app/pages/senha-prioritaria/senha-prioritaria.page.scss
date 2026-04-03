@@ -1,0 +1,42 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px 16px;
+  text-align: center;
+}
+
+.label-topo {
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: #aaa;
+  margin-bottom: 4px;
+}
+
+.cabecalho {
+  margin-bottom: 32px;
+  h1 { font-weight: bold; margin: 4px 0 12px; }
+}
+
+.badge-funcionamento {
+  background: #1a3a1a;
+  color: #4caf50;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 13px;
+}
+
+.card-senha {
+  background: #1e1e1e;
+  border-radius: 16px;
+  padding: 32px 48px;
+  width: 100%;
+  margin: 16px 0;
+
+  .tipo { font-size: 13px; letter-spacing: 1px; margin: 0 0 8px; }
+  .codigo { font-size: 36px; font-weight: bold; margin: 0 0 16px; }
+  .divider { height: 1px; background: #333; margin: 16px 0; }
+  .info { color: #aaa; margin: 8px 0; strong { color: #fff; } }
+}
+
+.aviso { color: #555; font-size: 13px; margin-top: 16px; }

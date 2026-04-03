@@ -5,12 +5,23 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
+  },
+  {
+    path: 'senha-prioritaria',
+    loadComponent: () => import('./pages/senha-prioritaria/senha-prioritaria.page').then(m => m.SenhaPrioritariaPage)
+  },
+  {
+    path: 'senha-geral',
+    loadComponent: () => import('./pages/senha-geral/senha-geral.page').then(m => m.SenhaGeralPage)
+  },
+  {
+    path: 'retirada-exames',
+    loadComponent: () => import('./pages/retirada-exames/retirada-exames.page').then(m => m.RetiradaExamesPage)
   }
 ];
+
 @NgModule({
-  imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
-  ],
+  imports: [RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })],
   exports: [RouterModule]
 })
 export class AppRoutingModule {}
