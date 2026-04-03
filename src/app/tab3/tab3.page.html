@@ -5,30 +5,42 @@
 </ion-header>
 
 <ion-content color="dark">
-  <div class="senha-principal-container" *ngIf="ultimasSenhas.length > 0">
+  <div
+    class="senha-principal-container"
+    *ngIf="ultimasSenhas && ultimasSenhas.length > 0"
+  >
     <p class="label-topo">SENHA ATUAL</p>
-    <h1 class="numero-senha">{{ ultimasSenhas[0].numero }}</h1>
-    <div class="guiche-badge">GUICHÊ {{ ultimasSenhas[0].guiche }}</div>
+    <h1 class="numero-senha">{{ ultimasSenhas[0]?.numero }}</h1>
+    <div class="guiche-badge">GUICHÊ {{ ultimasSenhas[0]?.guiche }}</div>
   </div>
 
-  <div class="historico-container">
+  <div
+    class="historico-container"
+    *ngIf="ultimasSenhas && ultimasSenhas.length > 1"
+  >
     <ion-list-header>
-      <ion-label color="medium">Histórico Recente</ion-label>
+      <ion-label color="medium">Últimas Chamadas</ion-label>
     </ion-list-header>
 
     <ion-list lines="full" class="lista-dark">
-      <ion-item *ngFor="let item of ultimasSenhas.slice(1)" color="dark">
+      <ion-item *ngFor="let item of ultimasSenhas.slice(1, 5)" color="dark">
         <ion-label>
-          <h2 class="senha-antiga">{{ item.numero }}</h2>
+          <h2 class="senha-antiga">{{ item?.numero }}</h2>
         </ion-label>
-        <ion-note slot="end" color="primary">Guichê {{ item.guiche }}</ion-note>
+        <ion-note slot="end" color="primary"
+          >Guichê {{ item?.guiche }}</ion-note
+        >
       </ion-item>
     </ion-list>
   </div>
 
-  <div class="ion-padding ion-text-center" *ngIf="ultimasSenhas.length === 0">
+  <div
+    class="ion-padding ion-text-center"
+    *ngIf="!ultimasSenhas || ultimasSenhas.length === 0"
+  >
+    <ion-spinner name="crescent" color="primary"></ion-spinner>
     <ion-text color="medium">
-      <p>Aguardando chamadas...</p>
+      <p>Conectando ao painel...</p>
     </ion-text>
   </div>
 </ion-content>

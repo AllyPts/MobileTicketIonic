@@ -7,7 +7,11 @@
 <ion-content [fullscreen]="true" class="ion-padding">
   <ion-item class="ion-margin-bottom">
     <ion-label position="stacked">Selecione seu Guichê</ion-label>
-    <ion-select placeholder="Escolher número" [(ngModel)]="guicheSelecionado">
+    <ion-select
+      placeholder="Escolher número"
+      [(ngModel)]="guicheSelecionado"
+      [disabled]="statusAtendimento === 'atendendo'"
+    >
       <ion-select-option [value]="1">Guichê 1</ion-select-option>
       <ion-select-option [value]="2">Guichê 2</ion-select-option>
       <ion-select-option [value]="3">Guichê 3</ion-select-option>
@@ -17,12 +21,18 @@
   <div>
     <ion-card color="light" class="ion-no-margin">
       <ion-card-header>
-        <ion-card-subtitle
-          >ATENDENDO NO GUICHÊ {{ guicheSelecionado }}</ion-card-subtitle
-        >
+        <ion-card-subtitle>
+          ATENDENDO NO GUICHÊ {{ guicheSelecionado || '?' }}
+        </ion-card-subtitle>
+
         <ion-card-title
           class="ion-text-center"
-          style="font-size: 3em; color: var(--ion-color-primary)"
+          style="
+            font-size: 3.5em;
+            color: var(--ion-color-primary);
+            font-weight: bold;
+            margin: 10px 0;
+          "
         >
           {{ senhaAtual?.numero || '---' }}
         </ion-card-title>
@@ -35,6 +45,7 @@
         color="success"
         size="large"
         (click)="proximaSenha()"
+        [disabled]="statusAtendimento === 'atendendo'"
       >
         <ion-icon name="megaphone-outline" slot="start"></ion-icon>
         Chamar Próximo
@@ -42,12 +53,24 @@
 
       <ion-row class="ion-margin-top">
         <ion-col>
-          <ion-button expand="block" color="warning" fill="outline">
+          <ion-button
+            expand="block"
+            color="warning"
+            fill="outline"
+            (click)="iniciarAtendimento()"
+            [disabled]="!senhaAtual || statusAtendimento === 'atendendo'"
+          >
             Iniciar
           </ion-button>
         </ion-col>
         <ion-col>
-          <ion-button expand="block" color="danger" fill="outline">
+          <ion-button
+            expand="block"
+            color="danger"
+            fill="outline"
+            (click)="finalizarAtendimento()"
+            [disabled]="statusAtendimento !== 'atendendo'"
+          >
             Finalizar
           </ion-button>
         </ion-col>
