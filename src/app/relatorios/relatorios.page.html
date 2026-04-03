@@ -1,0 +1,86 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Relatórios</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <ion-item lines="none" style="--background: #222; border-radius: 8px; margin-bottom: 15px; --color: #fff;">
+    <ion-label style="color: #fff; font-weight: 500;">Filtrar data:</ion-label>
+    <ion-datetime-button datetime="datetime"></ion-datetime-button>
+    <ion-modal [keepContentsMounted]="true">
+      <ng-template>
+        <ion-datetime id="datetime" presentation="date"></ion-datetime>
+      </ng-template>
+    </ion-modal>
+  </ion-item>
+  
+  <ion-card style="--background: #1e1e1e; margin: 0 0 15px 0; border: 1px solid #333;">
+    <ion-card-header>
+      <ion-card-title style="color: #fff;">Resumo Geral</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list lines="full" style="background: transparent;">
+        <ion-item style="--background: transparent; --color: #fff;">
+          <ion-label>Senhas Emitidas: <strong style="color: #3880ff;">{{ totalEmitidas }}</strong></ion-label>
+        </ion-item>
+        <ion-item style="--background: transparent; --color: #fff;">
+          <ion-label>Senhas Atendidas: <strong style="color: #2dd36f;">{{ totalAtendidas }}</strong></ion-label>
+        </ion-item>
+        <ion-item style="--background: transparent; --color: #fff;">
+          <ion-label>Tempo Médio: <strong style="color: #ffc409;">{{ tempoMedioGeral }}</strong></ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card style="--background: #1e1e1e; margin: 0 0 20px 0; border: 1px solid #333;">
+    <ion-card-header>
+      <ion-card-title style="color: #fff;">Detalhamento por Tipo</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list lines="none" style="background: transparent;">
+        <ion-item style="--background: transparent; --color: #ccc;">
+          <ion-label>Prioritárias (SP): <strong>{{ senhasSP }}</strong></ion-label>
+        </ion-item>
+        <ion-item style="--background: transparent; --color: #ccc;">
+          <ion-label>Gerais (SG): <strong>{{ senhasSG }}</strong></ion-label>
+        </ion-item>
+        <ion-item style="--background: transparent; --color: #ccc;">
+          <ion-label>Exames (SE): <strong>{{ senhasSE }}</strong></ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <h3 style="margin: 20px 0 10px 5px; font-size: 1.1em; color: #fff;">Histórico Detalhado</h3>
+  
+  <div style="overflow-x: auto; border-radius: 8px; border: 1px solid #444; background-color: #1e1e1e;">
+    <table style="width: 100%; border-collapse: collapse; font-size: 0.85em;">
+      <thead>
+        <tr style="background-color: #3880ff; color: #ffffff; text-align: left;">
+          <th style="padding: 12px 8px;">Código</th>
+          <th style="padding: 12px 8px;">Início</th>
+          <th style="padding: 12px 8px;">Fim</th>
+          <th style="padding: 12px 8px;">Guichê</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of atendimentos; let i = index" [style.background-color]="i % 2 == 0 ? '#1e1e1e' : '#2a2a2a'">
+          <td style="padding: 10px 8px; border-bottom: 1px solid #333; color: #fff;">{{ item.codigo }}</td>
+          <td style="padding: 10px 8px; border-bottom: 1px solid #333; color: #fff;">{{ item.emissao }}</td>
+          <td style="padding: 10px 8px; border-bottom: 1px solid #333; color: #fff;">{{ item.atendimento || '--:--' }}</td>
+          <td style="padding: 10px 8px; border-bottom: 1px solid #333; color: #fff; text-align: center;">{{ item.guiche || '--' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="ion-padding-top" style="margin-top: 20px;">
+    <ion-button expand="block" color="danger" (click)="verificarExpediente()">
+      Validar Horário
+    </ion-button>
+  </div>
+
+</ion-content>

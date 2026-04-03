@@ -17,7 +17,11 @@ const routes: Routes = [
   {
     path: 'retirada-exames',
     loadComponent: () => import('./pages/retirada-exames/retirada-exames.page').then(m => m.RetiradaExamesPage)
+  },  {
+    path: 'relatorios',
+    loadChildren: () => import('./relatorios/relatorios.module').then( m => m.RelatoriosPageModule)
   }
+
 ];
 
 @NgModule({
